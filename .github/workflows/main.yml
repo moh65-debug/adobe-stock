@@ -63,27 +63,5 @@ jobs:
           }
           choco upgrade googlechrome -y --ignore-checksums
 
-      - name: Place required files near generate_image.py
-        run: |
-          # Assuming pex2.py is in the root directory
-          # Files are already in repo root after checkout, so no move needed if pex2.py is in root
-          # If pex2.py is in subfolder, adjust paths here
-          echo "Files assumed already in correct location"
-
       - name: Run generate_image.py
         run: python generate_image.py
-
-      - name: Commit and push updated tracking files if changed
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git add processed_product_asins.txt scheduled_times.txt uploaded_image_paths.txt
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update tracking files from workflow run"
-            git push origin HEAD:refs/heads/main
-          fi
