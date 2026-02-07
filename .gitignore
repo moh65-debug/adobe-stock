@@ -1,0 +1,25 @@
+# Chrome session data (large, binary, should not be in version control)
+data/
+
+# Generated images
+batch_*_image_*.jpg
+batch_*_image_*.png
+batch_*_image_*.webp
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
